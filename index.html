@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Flappy Bird</title>
+        <link rel="stylesheet" href="flappybird.css">
+        <script src="flappybird.js"></script>
+        <script src="tone.js"></script> <!-- Added script for tone.js -->
+    </head>
+    <body>
+        <div class="container">
+            <canvas id="board"></canvas>
+            <div class="controls">
+                <button id="toggleButton">Pause</button>
+                <button id="startButton">Start</button>
+                <button id="replayButton" style="display: none;">Replay</button>
+            </div>
+        </div>
+        <!-- Start Screen Modal -->
+        <div id="startScreenModal" class="modal">
+            <div class="modal-content">
+                <h2>Press START to Begin</h2>
+                <button id="modalStartButton">Start</button> <!-- Added Start button in modal -->
+            </div>
+        </div>
+        <!-- Game Over Modal -->
+        <div id="gameOverModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Game Over</h2>
+                <p>Press REPLAY to Restart</p>
+                <button id="modalReplayButton">Replay</button>
+            </div>
+        </div>
+
+    </body>
+</html>
