@@ -88,15 +88,19 @@ window.onload = function () {
 
     // When the user clicks on <span> (x), close the modal
     span.onclick = function() {
-        modal.style.display = "none";
+        modal.style.display = "none"; // Only close the modal
     }
 
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
         if (event.target == modal) {
-            modal.style.display = "none";
+            modal.style.display = "none"; // Only close the modal
         }
     }
+
+    // Add touch event listeners for mobile support
+    board.addEventListener("touchstart", handleTouch);
+    board.addEventListener("touchend", handleTouch);
 };
 
 function changeWallpaper() {
@@ -261,5 +265,15 @@ function toggleGame() {
     paused = !paused;
     document.getElementById("toggleButton").textContent = paused ? "Play" : "Pause";
     if (!paused) update();
+}
+
+function handleTouch(e) {
+    if (!gameOver && !paused) {
+        velocityY = -6;
+        if (soundEnabled) jumpSound.play();
+    }
+    if (gameOver) {
+        restartGame();
+    }
 }
 
