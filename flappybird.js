@@ -75,10 +75,10 @@ window.onload = function () {
 
     // Add event listeners for the buttons
     document.getElementById("toggleButton").addEventListener("click", toggleGame);
-    document.getElementById("startButton").addEventListener("click", startCountdown);
+    document.getElementById("startButton").addEventListener("click", startGame);
     document.getElementById("replayButton").addEventListener("click", restartGame);
     document.getElementById("modalReplayButton").addEventListener("click", restartGame);
-    document.getElementById("modalStartButton").addEventListener("click", startCountdown); // Added event listener for modal start button
+    document.getElementById("modalStartButton").addEventListener("click", startGame); // Updated event listener for modal start button
 
     // Get the modal
     var modal = document.getElementById("gameOverModal");
@@ -248,24 +248,6 @@ function showStartScreen() {
     startScreenModal.style.display = "block";
 }
 
-function startCountdown() {
-    if (countdownRunning) return; // Prevent multiple countdowns
-    countdownRunning = true;
-    var countdown = 3;
-    var countdownInterval = setInterval(function() {
-        context.clearRect(0, 0, board.width, board.height);
-        context.fillStyle = "white";
-        context.font = "60px sans-serif";
-        context.fillText(countdown, board.width / 2 - 15, board.height / 2);
-        countdown--;
-        if (countdown < 0) {
-            clearInterval(countdownInterval);
-            countdownRunning = false;
-            startGame();
-        }
-    }, 1000);
-}
-
 function startGame() {
     document.getElementById("startScreenModal").style.display = "none";
     document.getElementById("startButton").style.display = "none";
@@ -280,3 +262,4 @@ function toggleGame() {
     document.getElementById("toggleButton").textContent = paused ? "Play" : "Pause";
     if (!paused) update();
 }
+
